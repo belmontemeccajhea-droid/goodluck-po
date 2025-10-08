@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Good Luck Nea!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6e6;
+      font-family: 'Segoe Script', cursive;
+      overflow: hidden;
+    }
+
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: #d6336c;
+      text-shadow: 2px 2px #fff;
+      animation: pulse 2s infinite;
+      z-index: 10;
+      text-align: center;
+      max-width: 90%;
+      line-height: 1.5;
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .gif-sticker {
+      position: absolute;
+      width: 100px;
+      animation: drift 10s ease-in-out infinite, pulseSize 3s ease-in-out infinite;
+      z-index: 10;
+    }
+
+    .gif1 { top: 20px; left: 20px; animation-delay: 0s, 0s; }
+    .gif2 { top: 20px; right: 20px; animation-delay: 2s, 1s; }
+    .gif3 { bottom: 20px; left: 20px; animation-delay: 4s, 2s; }
+    .gif4 { bottom: 20px; right: 20px; animation-delay: 6s, 3s; }
+
+    @keyframes drift {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(30px, -20px); }
+      50%  { transform: translate(-20px, 30px); }
+      75%  { transform: translate(10px, -10px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes pulseSize {
+      0%, 100% { width: 100px; }
+      50% { width: 120px; }
+    }
+
+    .petal, .balloon, .heart, .sparkle {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .petal {
+      width: 15px;
+      height: 25px;
+      background: pink;
+      border-radius: 50% 50% 0 0;
+      transform: rotate(45deg);
+      animation: fall 8s linear infinite;
+    }
+
+    .balloon {
+      width: 30px;
+      height: 40px;
+      background: #ff8da1;
+      border-radius: 50%;
+      animation: rise 10s ease-in infinite;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #555;
+      transform: translateX(-50%);
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    .sparkle {
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -30px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    @keyframes rise {
+      0% { top: 100vh; opacity: 1; }
+      100% { top: -50px; opacity: 0; }
+    }
+
+    @keyframes float {
+      0% { top: 100vh; opacity: 1; }
+      100% { top: -50px; opacity: 0; }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    Good luck, Nea! 🌸 Kaya mo 'yan, ikaw pa ba? Super proud ako sa'yo always.<br>
+    Alam kong pagod ka sa mga ginagawa niyo sa school ngayon, take a break ha — rest is also part of the process.<br>
+    I'm always here to support you, no matter what. Ingat lagi! 💖
+  </div>
+
+  <!-- Four animated GIF stickers -->
+  <img src="nea1.gif" class="gif-sticker gif1" />
+  <img src="nea2.gif" class="gif-sticker gif2" />
+  <img src="nea3.gif" class="gif-sticker gif3" />
+  <img src="nea4.gif" class="gif-sticker gif4" />
+
+  <script>
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    // Petals
+    for (let i = 0; i < 40; i++) {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = Math.random() * width + 'px';
+      petal.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      document.body.appendChild(petal);
+    }
+
+    // Balloons
+    for (let i = 0; i < 20; i++) {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * width + 'px';
+      balloon.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      document.body.appendChild(balloon);
+    }
+
+    // Hearts
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * width + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+    }
+
+    // Sparkles
+    for (let i = 0; i < 60; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random() * width + 'px';
+      sparkle.style.top = Math.random() * height + 'px';
+      sparkle.style.animationDelay = (Math.random() * 3) + 's';
+      document.body.appendChild(sparkle);
+    }
+  </script>
+</body>
+</html>
